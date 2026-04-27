@@ -1,0 +1,30 @@
+[project]
+name = "coderank-pr-demo"
+version = "0.1.0"
+description = "Fixture target for CodeRank Reviewer end-to-end tests."
+authors = [
+    {name = "CodeRank", email = "hello@coderank.ai"},
+]
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "pydantic[email]>=2.9,<2.10",
+    "fastapi>=0.115,<0.120",
+    "sqlalchemy>=2.0,<2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "httpx>=0.27",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = "."
+testpaths = ["tests"]
